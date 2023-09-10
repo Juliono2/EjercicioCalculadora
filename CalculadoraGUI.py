@@ -7,8 +7,12 @@ class Calculadora:
         self.entrada2 = StringVar()
 
     def ingresarValor(self, tecla):
-        print(tecla)
-        pass
+        if tecla >= "0" and tecla <= "9":
+            self.entrada2.set(self.entrada2.get() + str(tecla))
+        elif tecla in ["+", "-", "*", "/", "^"]:
+            self.operador = tecla
+            self.entrada1.set(self.entrada2.get() + tecla)
+            self.entrada2.set("")
 
     def calcularResultado(self):
         pass
