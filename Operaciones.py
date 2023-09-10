@@ -1,2 +1,4 @@
 class Operaciones():
-    pass
+    
+    def sumar(self, a, b):
+        return a + b
