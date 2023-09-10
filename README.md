@@ -16,7 +16,7 @@ La calculadora puede realizar operaciones haciendo uso de una clase que intenta 
 
 ## Cómo usar la calculadora
 
-1. Ejecute el programa `calculadora.py`.
+1. Ejecute el programa en terminal usando `python CalculadoraGUI.py`.
 2. Aparecerá una ventana con la interfaz de la calculadora.
 3. Haga clic en los botones numéricos (0-9) para ingresar números.
 4. Utilice los botones de operadores (+, -, *, /, ^) para seleccionar la operación deseada.
