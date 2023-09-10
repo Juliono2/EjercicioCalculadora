@@ -2,24 +2,24 @@ from tkinter import *
 from tkinter import ttk
 from Operaciones import Operaciones
 
-class Calculadora:
-    def __init__(self):
+class Calculadora:                                  # Clase para el manejo de funcionalidades de una calculadora
+    def __init__(self):                             #Constructor
         self.entrada1 = StringVar()
         self.entrada2 = StringVar()
         self.resultado = 0
         self.operador = ""
-        self.operaciones = Operaciones()
+        self.operaciones = Operaciones()            #Relacion de asociacion con rol "operaciones" de tipo Operaciones
 
-    def ingresarValor(self, tecla):
-        if tecla >= "0" and tecla <= "9":
+    def ingresarValor(self, tecla):                 #Metodo para ingresar valores en los labels 
+        if tecla >= "0" and tecla <= "9":                               #Cuando son numeros
             self.entrada2.set(self.entrada2.get() + str(tecla))
-        elif tecla in ["+", "-", "*", "/", "^"]:
+        elif tecla in ["+", "-", "*", "/", "^"]:                        #Cuando se ingresa un operador
             self.operador = tecla
             self.entrada1.set(self.entrada2.get() + tecla)
             self.entrada2.set("")
 
-    def calcularResultado(self):
-        valor1 = float(self.entrada1.get()[:-1])
+    def calcularResultado(self):                        #Metodo calcular resultados usa las operaciones y los
+        valor1 = float(self.entrada1.get()[:-1])        #Valores obtenidos en los labels
         valor2 = float(self.entrada2.get())
         if self.operador == "+":
             self.resultado = self.operaciones.sumar(valor1, valor2)
@@ -35,23 +35,23 @@ class Calculadora:
         self.entrada1.set("")
         self.operador = ""
 
-    def borrar(self):
+    def borrar(self):                               #Metodo para borrar un caracter del texto
         entrada2_texto = self.entrada2.get()
         if len(entrada2_texto) > 0:
             nueva_entrada2 = entrada2_texto[:-1]
             self.entrada2.set(nueva_entrada2)
-        elif len(self.entrada1.get()) > 0:
+        elif len(self.entrada1.get()) > 0:          #Se considera el caso en el que el label 1 esta vacio
             nueva_entrada1 = self.entrada1.get()[:-1]
             self.entrada2.set(nueva_entrada1)
             self.entrada1.set("")
 
-    def borrar_todo(self):
+    def borrar_todo(self):                          #Metodo para borrar todito todo
         self.entrada1.set("")
         self.entrada2.set("")
         self.operador = ""
         self.resultado = 0
 
-def main():
+def main():                                         #Desplegar la interfaz grafica
     root= Tk()
     root.title("Calculadora")
     root.geometry("+500+80")
@@ -59,14 +59,17 @@ def main():
     mainframe = ttk.Frame(root)
     mainframe.grid(column=0, row=0)
 
+    #Ejemplificamos la calculadora para en los comandos hacer uso de sus metodos
     calculadora = Calculadora()
 
+    #Labels
     label_entrada1 = ttk.Label(mainframe, textvariable=calculadora.entrada1, anchor="e")
     label_entrada1.grid(column=0, row=0, columnspan=4, sticky=(W,E))
 
     label_entrada2 = ttk.Label(mainframe, textvariable=calculadora.entrada2, anchor="e")
     label_entrada2.grid(column=0, row=1, columnspan=4, sticky=(W,E))
 
+    #Botones
     button0 = ttk.Button(mainframe, text="0", command=lambda: calculadora.ingresarValor("0"))
     button1 = ttk.Button(mainframe, text="1", command=lambda: calculadora.ingresarValor("1"))
     button2 = ttk.Button(mainframe, text="2", command=lambda: calculadora.ingresarValor("2"))
@@ -92,6 +95,7 @@ def main():
     button_igual = ttk.Button(mainframe, text="=", command=lambda: calculadora.calcularResultado())
     button_potencia = ttk.Button(mainframe, text="^", command=lambda: calculadora.ingresarValor("^"))
 
+    #Deshabilitamos estos botones pues no tienen funcionalidad actualmente
     button_parentesis1.config(state="disabled")
     button_parentesis2.config(state="disabled")
     button_punto.config(state="disabled")
