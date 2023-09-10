@@ -44,7 +44,10 @@ class Calculadora:
             self.entrada1.set("")
 
     def borrar_todo(self):
-        pass
+        self.entrada1.set("")
+        self.entrada2.set("")
+        self.operador = ""
+        self.resultado = 0
 
 def main():
     root= Tk()
