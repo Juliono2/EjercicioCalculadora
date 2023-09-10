@@ -11,3 +11,6 @@ class Operaciones():
     
     def dividir(self, a, b):
         return a / b
+    
+    def potenciar(self, a, b):
+        return a ** b
