@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from Operaciones import Operaciones
 
 class Calculadora:
     def __init__(self):
@@ -7,6 +8,7 @@ class Calculadora:
         self.entrada2 = StringVar()
         self.resultado = 0
         self.operador = ""
+        self.operaciones = Operaciones()
 
     def ingresarValor(self, tecla):
         if tecla >= "0" and tecla <= "9":
@@ -20,15 +22,15 @@ class Calculadora:
         valor1 = float(self.entrada1.get()[:-1])
         valor2 = float(self.entrada2.get())
         if self.operador == "+":
-            print("sumar")
+            self.resultado = self.operaciones.sumar(valor1, valor2)
         elif self.operador == "-":
-            print("restar")
+            self.resultado = self.operaciones.restar(valor1, valor2)
         elif self.operador == "*":
-            print("multiplicar")
+            self.resultado = self.operaciones.multiplicar(valor1, valor2)
         elif self.operador == "/":
-            print("dividir")
+            self.resultado = self.operaciones.dividir(valor1, valor2)
         elif self.operador == "^":
-            print("potenciar")
+            self.resultado = self.operaciones.potenciar(valor1, valor2)
         self.entrada2.set(str(self.resultado))
         self.entrada1.set("")
         self.operador = ""
