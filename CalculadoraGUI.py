@@ -5,6 +5,8 @@ class Calculadora:
     def __init__(self):
         self.entrada1 = StringVar()
         self.entrada2 = StringVar()
+        self.resultado = 0
+        self.operador = ""
 
     def ingresarValor(self, tecla):
         if tecla >= "0" and tecla <= "9":
@@ -15,7 +17,21 @@ class Calculadora:
             self.entrada2.set("")
 
     def calcularResultado(self):
-        pass
+        valor1 = float(self.entrada1.get()[:-1])
+        valor2 = float(self.entrada2.get())
+        if self.operador == "+":
+            print("sumar")
+        elif self.operador == "-":
+            print("restar")
+        elif self.operador == "*":
+            print("multiplicar")
+        elif self.operador == "/":
+            print("dividir")
+        elif self.operador == "^":
+            print("potenciar")
+        self.entrada2.set(str(self.resultado))
+        self.entrada1.set("")
+        self.operador = ""
 
     def borrar(self):
         pass
