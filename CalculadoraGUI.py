@@ -34,7 +34,14 @@ class Calculadora:
         self.operador = ""
 
     def borrar(self):
-        pass
+        entrada2_texto = self.entrada2.get()
+        if len(entrada2_texto) > 0:
+            nueva_entrada2 = entrada2_texto[:-1]
+            self.entrada2.set(nueva_entrada2)
+        elif len(self.entrada1.get()) > 0:
+            nueva_entrada1 = self.entrada1.get()[:-1]
+            self.entrada2.set(nueva_entrada1)
+            self.entrada1.set("")
 
     def borrar_todo(self):
         pass
